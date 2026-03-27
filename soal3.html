@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Sederhana</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        input { margin-bottom: 10px; padding: 5px; }
+        button { padding: 5px 10px; cursor: pointer; }
+        #hasil { margin-top: 15px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h2>Kalkulator Penjumlahan</h2>
+    
+    <!-- 1. Terdapat 2 input angka -->
+    <input type="number" id="angka1" placeholder="Angka pertama"><br>
+    <input type="number" id="angka2" placeholder="Angka kedua"><br>
+    
+    <!-- 2. Terdapat tombol "Hitung" -->
+    <button onclick="hitungPenjumlahan()">Hitung</button>
+    
+    <!-- 3. Elemen <p> untuk hasil -->
+    <p id="hasil"></p>
+
+    <script>
+        function hitungPenjumlahan() {
+            // A. Ambil nilai dari kedua input
+            let input1 = document.getElementById('angka1').value;
+            let input2 = document.getElementById('angka2').value;
+            let elemenHasil = document.getElementById('hasil');
+
+            // Validasi input: pastikan diisi
+            if (input1 === '' || input2 === '') {
+                elemenHasil.innerHTML = "Harap isi kedua angka!";
+                return;
+            }
+
+            // B. Jumlahkan kedua angka (konversi ke float agar bisa desimal)
+            let hasil = parseFloat(input1) + parseFloat(input2);
+
+            // C. Tampilkan hasilnya ke dalam elemen <p>
+            elemenHasil.innerHTML = "Hasil: " + hasil;
+        }
+    </script>
+
+</body>
+</html>

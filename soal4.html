@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Bangun Datar</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .container { max-width: 400px; margin: auto; padding: 20px; border: 1px solid #ccc; border-radius: 10px; }
+        input { width: 100%; padding: 10px; margin: 10px 0; box-sizing: border-box; }
+        button { padding: 10px; margin: 5px; cursor: pointer; }
+        .result { margin-top: 20px; font-weight: bold; font-size: 1.2em; color: blue; }
+        .button-group { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h3>Kalkulator Bangun Datar</h3>
+    <p>Input 1 (Sisi/Panjang/Alas/Jari-jari):</p>
+    <input type="number" id="input1" placeholder="Masukkan nilai 1">
+    
+    <p>Input 2 (Sisi/Lebar/Tinggi):</p>
+    <input type="number" id="input2" placeholder="Masukkan nilai 2">
+
+    <div class="button-group">
+        <button onclick="hitungLuas('persegi')">Luas Persegi</button>
+        <button onclick="hitungLuas('persegiPanjang')">Luas P. Panjang</button>
+        <button onclick="hitungLuas('segitiga')">Luas Segitiga</button>
+        <button onclick="hitungLuas('lingkaran')">Luas Lingkaran</button>
+    </div>
+
+    <p class="result">Hasil: <span id="hasil">0</span></p>
+</div>
+
+<script>
+    function hitungLuas(jenis) {
+        // 1. Ambil nilai dari input
+        let a = parseFloat(document.getElementById('input1').value);
+        let b = parseFloat(document.getElementById('input2').value);
+        let hasil = 0;
+        let pTag = document.getElementById('hasil');
+
+        // Validasi input
+        if (isNaN(a) || isNaN(b)) {
+            pTag.innerText = "Masukkan angka yang valid";
+            return;
+        }
+
+        // 2. Lakukan perhitungan sesuai rumus
+        switch (jenis) {
+            case 'persegi':
+                // Untuk persegi biasanya 1 input cukup, tapi ketentuan minta 2 input. 
+                // Kita gunakan input1 sebagai sisi.
+                hasil = a * a;
+                break;
+            case 'persegiPanjang':
+                hasil = a * b;
+                break;
+            case 'segitiga':
+                hasil = 0.5 * a * b;
+                break;
+            case 'lingkaran':
+                // Menggunakan input1 sebagai jari-jari (r)
+                hasil = Math.PI * a * a;
+                break;
+        }
+
+        // 3. Tampilkan hasil
+        pTag.innerText = hasil.toFixed(2); // Dibulatkan 2 angka di belakang koma
+    }
+</script>
+
+</body>
+</html>

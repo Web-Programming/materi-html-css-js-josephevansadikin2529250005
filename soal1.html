@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konfirmasi Keluar</title>
+</head>
+<body>
+
+    <h2>Contoh Konfirmasi JavaScript</h2>
+    <button onclick="tanyaKeluar()">Keluar</button>
+
+    <script>
+        function tanyaKeluar() {
+            // Menampilkan dialog konfirmasi
+            var konfirmasi = confirm("Apakah kamu ingin keluar?");
+
+            // Mengecek hasil konfirmasi
+            if (konfirmasi) {
+                // Jika OK
+                alert("Anda keluar");
+            } else {
+                // Jika Cancel
+                alert("Anda tetap di halaman");
+            }
+        }
+    </script>
+
+</body>
+</html>
